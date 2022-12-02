@@ -62,7 +62,7 @@
             </th>
             <th>
               <a
-                target="_self"
+                target="_blank"
                 :href="link.shortenedUrl"
                 class="link link-primary"
                 >{{ link.shortenedUrl }}</a
