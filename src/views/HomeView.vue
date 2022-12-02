@@ -17,16 +17,25 @@ function hello() {
 async function shortenURL() {
   try {
     if (originalUrl != null && createdBy != null) {
-      const result = await axios.post(`${import.meta.env.VITE_API_URL}/shortlinks`, {
-        originalUrl: originalUrl.value,
-        createdBy: createdBy.value,
-        specialName: specialName.value,
-        expiresAt: expiresAt.value,
-      });
+      const result = await axios.post(
+        `${import.meta.env.VITE_API_URL}/shortlinks`,
+        {
+          originalUrl: originalUrl.value,
+          createdBy: createdBy.value,
+          specialName: specialName.value,
+          expiresAt: expiresAt.value,
+        }
+      );
 
       console.log(result);
 
       createdShortLink.value = result.data;
+      if (createdShortLink.value != null) {
+        originalUrl.value = null;
+        createdBy.value = null;
+        specialName.value = null;
+        expiresAt.value = null;
+      }
 
       console.log(createdShortLink.value);
     }
@@ -39,7 +48,9 @@ async function getURLs() {
   try {
     if (searchQuery.value !== "") {
       const result = await axios.get(
-        `${import.meta.env.VITE_API_URL}/shortlinks/search?searchQuery=${searchQuery.value}`
+        `${import.meta.env.VITE_API_URL}/shortlinks/search?searchQuery=${
+          searchQuery.value
+        }`
       );
 
       console.log(result);
