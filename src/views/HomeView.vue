@@ -92,53 +92,6 @@ async function getURLs() {
     </div>
 
     <div
-      class="card bg-base-100 shadow-xl"
-      style="margin-left: auto; margin-right: auto"
-      v-if="createdShortLink"
-    >
-      <div class="card-body">
-        <h2 class="card-title self-center">Yeni URL Oluşturuldu</h2>
-        <p>
-          Orijinal URL :
-          <a
-            target="_blank"
-            :href="createdShortLink.originalUrl"
-            class="link link-primary"
-            >{{ createdShortLink.originalUrl }}</a
-          >
-        </p>
-        <p>
-          Kısaltılmış URL :
-          <a
-            target="_blank"
-            :href="createdShortLink.shortenedUrl"
-            class="link link-primary"
-            >{{ createdShortLink.shortenedUrl }}</a
-          >
-        </p>
-        <p>Oluşturan : {{ createdShortLink.createdBy }}</p>
-        <p>Özel Ad : {{ createdShortLink.specialName }}</p>
-        <p>
-          Oluşturulduğu Tarih :
-          {{ new Date(createdShortLink.createdAt).toLocaleString() }}
-        </p>
-        <p>
-          Son Geçerlilik Tarih :
-          {{
-            createdShortLink.expiresAt
-              ? new Date(createdShortLink.expiresAt).toLocaleString()
-              : "Yok"
-          }}
-        </p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary" @click="createdShortLink = null">
-            Kapat
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
       class="card card-bordered card-side bg-base-100 shadow-xl my-16"
       style="margin-left: auto; margin-right: auto"
     >
@@ -186,6 +139,53 @@ async function getURLs() {
             </label>
             <button class="btn btn-primary">Kısalt</button>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="card bg-base-100 shadow-xl"
+      style="margin-left: auto; margin-right: auto"
+      v-if="createdShortLink"
+    >
+      <div class="card-body">
+        <h2 class="card-title self-center">Yeni URL Oluşturuldu</h2>
+        <p>
+          Orijinal URL :
+          <a
+            target="_blank"
+            :href="createdShortLink.originalUrl"
+            class="link link-primary"
+            >{{ createdShortLink.originalUrl }}</a
+          >
+        </p>
+        <p>
+          Kısaltılmış URL :
+          <a
+            target="_blank"
+            :href="createdShortLink.shortenedUrl"
+            class="link link-primary"
+            >{{ createdShortLink.shortenedUrl }}</a
+          >
+        </p>
+        <p>Oluşturan : {{ createdShortLink.createdBy }}</p>
+        <p>Özel Ad : {{ createdShortLink.specialName }}</p>
+        <p>
+          Oluşturulduğu Tarih :
+          {{ new Date(createdShortLink.createdAt).toLocaleString() }}
+        </p>
+        <p>
+          Son Geçerlilik Tarih :
+          {{
+            createdShortLink.expiresAt
+              ? new Date(createdShortLink.expiresAt).toLocaleString()
+              : "Yok"
+          }}
+        </p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary" @click="createdShortLink = null">
+            Kapat
+          </button>
         </div>
       </div>
     </div>
